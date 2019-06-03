@@ -1,0 +1,79 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body style="background-image: url(bg.jpg); height: 700px">
+	<div>
+		<h2>ОЧКИ:<span class="point">0</span></h2>
+		<h2>ЖУКИ:<span class="zhyk">0</span></h2>
+		<h2>ВРЕМЯ:<span class="time">0</span></h2>
+	</div>
+	
+
+<script type="text/javascript">
+	let point = document.querySelector(".point");
+	let zhyk = document.querySelector(".zhyk")
+
+
+ 	let x = 0;
+	let points = 0;
+
+
+	let create = function(){
+		let func = function(arg) { //функция с аргументом
+			let rand = Math.random()*arg //случайное число до 5
+			let round = Math.round(rand) //округлить число 
+			return round;
+		}
+
+		var omg = document.createElement("img");
+        document.body.appendChild(omg);
+        omg.src = "img.svg";
+        omg.style.height = "70px";
+		omg.style.marginLeft = func(1300)+"px";
+		omg.style.marginTop = func(700)+"px";
+		omg.style.position = "absolute";    
+
+		var apple = document.createElement("img");
+		document.body.appendChild(apple);
+        apple.src = "apple.jpg";
+        apple.style.height = "70px"; 
+        apple.style.marginLeft = func(1300)+"px";
+		apple.style.marginTop = func(700)+"px";
+		apple.style.position = "absolute";  
+
+		x = x + 1;
+		zhyk.innerHTML = x;
+
+		omg.onclick = function(){
+			omg.style.display = "none";
+			points = points +1;
+			point.innerHTML = points;
+			
+		}
+
+		apple.onclick = function(){
+			let t = 2000
+		}
+	}
+
+	let end = setInterval(create,1000)
+
+	let proverka = function() {//создание функции
+		if( points > 3 ){//условие
+			alert("WIN")
+		} 
+		else{
+			alert("LOSE")
+		}
+	}
+	setTimeout(proverka,4000) 
+
+	setTimeout(function() {
+  		clearInterval(end);
+	}, 4000);
+
+</script>
+</body>
+</html>
